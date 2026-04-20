@@ -1,0 +1,25 @@
+# Claude Code
+.claude/skills/workinclaude
+!.claude/skills/workinclaude/skills/
+
+# Dependencies
+node_modules/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build
+dist/
+build/
+*.tgz
