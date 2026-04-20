@@ -1,8 +1,8 @@
 {
   "name": "workinclaude",
   "owner": {
-    "name": "User",
-    "email": "user@example.com"
+    "name": "Woods",
+    "email": "woods.web3@gmail.com"
   },
   "metadata": {
     "description": "Team collaboration skill with brainstorming + TDD workflows for project planning, development, and memory management",
@@ -12,7 +12,7 @@
     {
       "name": "workinclaude",
       "description": "Team collaboration skill with brainstorming + TDD workflows for project planning, development, and memory management",
-      "source": "./skills/workinclaude"
+      "source": "./"
     }
   ]
 }
