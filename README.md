@@ -59,16 +59,22 @@ workinclaude/
 │   ├── plugin.json
 │   └── hooks/
 ├── skills/
-│   └── workinclaude/      # Main skill
-│       ├── SKILL.md
-│       ├── workflows/
-│       ├── templates/
-│       └── default-skills/
+│   ├── workinclaude/      # Main skill
+│   │   ├── SKILL.md
+│   │   ├── workflows/
+│   │   └── templates/
+│   └── karpathy-guidelines/  # Bundled default skill
 ├── scripts/
 │   ├── init-project.js
-│   └── install.js
+│   └── install.js         # Auto-clones superpowers from GitHub
 └── docs/
 ```
+
+## Dependencies
+
+- **superpowers** - Auto-cloned from https://github.com/obra/superpowers.git
+  - Provides: brainstorming, writing-plans, tdd, subagent-driven-development
+- **karpathy-guidelines** - Bundled with this plugin
 
 ## License
 

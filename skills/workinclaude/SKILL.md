@@ -21,8 +21,10 @@ WorkInClaude is a composite skill for team collaboration that orchestrates exist
 ## Default Skills
 
 - `karpathy-guidelines` - Avoid common LLM coding mistakes
-- `superpowers:systematic-debugging` - Debug methodology
-- `superpowers:writing-skills` - Skill creation
+- `superpowers:brainstorming` - Planning workflow
+- `superpowers:test-driven-development` - TDD methodology
+- `superpowers:writing-plans` - Implementation planning
+- `superpowers:subagent-driven-development` - Subagent execution
 
 ## Workflows
 

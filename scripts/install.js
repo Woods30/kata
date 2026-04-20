@@ -79,7 +79,7 @@ function cloneSuperpowers() {
 function install() {
   console.log('WorkinClaude: Installing skill to project...\n');
 
-  // Clone superpowers if not exists
+  // Clone superpowers if not exists (will be used as remote reference)
   cloneSuperpowers();
 
   // Create project skills directory
@@ -90,13 +90,6 @@ function install() {
   const workinclaudeDest = path.join(PROJECT_SKILLS_DIR, 'workinclaude');
   copyDir(workinclaudeSrc, workinclaudeDest);
   console.log(`\nSkill installed: ${workinclaudeDest}`);
-
-  // Copy superpowers (if exists locally)
-  if (fs.existsSync(SUPERPOWERS_DIR)) {
-    const superpowersDest = path.join(PROJECT_SKILLS_DIR, 'superpowers');
-    copyDir(SUPERPOWERS_DIR, superpowersDest);
-    console.log(`Skill installed: ${superpowersDest}`);
-  }
 
   // Copy karpathy-guidelines
   const karpathySrc = path.join(PLUGIN_DIR, 'skills', 'karpathy-guidelines');

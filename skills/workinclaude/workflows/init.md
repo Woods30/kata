@@ -7,8 +7,10 @@ Initializes a project for team collaboration.
 ## New Project Init
 
 1. Scan project structure (language, framework, existing conventions)
-2. Check default skills availability (karpathy-guidelines, systematic-debugging, writing-skills)
-   - If missing → auto-install from `default-skills/` to project skills directory
+2. Auto-install skills via install.js:
+   - Clone superpowers from GitHub (if not exists)
+   - Copy karpathy-guidelines to project skills directory
+   - Copy workinclaude skill to project skills directory
 3. Generate `CLAUDE.md` with project-level conventions
 4. Generate `CLAUDE.local.template.md` for team members
 5. Create `.claude/memory/` directory structure
@@ -25,6 +27,7 @@ Initializes a project for team collaboration.
 
 ## Skill Auto-Install
 
-If a default skill is missing:
-1. Copy from `workinclaude/default-skills/<skill>.md` to project skills directory
-2. Log installation in init output
+During init, install.js handles:
+- `superpowers` - cloned from https://github.com/obra/superpowers.git
+- `karpathy-guidelines` - copied from plugin
+- `workinclaude` - copied from plugin
