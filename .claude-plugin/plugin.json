@@ -1,6 +1,6 @@
 {
-  "name": "workinclaude",
-  "description": "Team collaboration skill with brainstorming + TDD workflows",
+  "name": "kata",
+  "description": "AI agent programming best-practices framework with reusable workflows, skills, constraints, and validation loops.",
   "version": "1.0.0",
   "author": {
     "name": "Woods",

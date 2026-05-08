@@ -1,0 +1,81 @@
+# Kata
+
+语言：[English](README.md) | [中文](README.zh-CN.md)
+
+文件索引：[Codex 插件](.codex-plugin/plugin.json) · [Claude 插件](.claude-plugin/plugin.json) · [Kata Skill](skills/kata/SKILL.md) · [Kata 命令](commands/kata.md) · [安装器](scripts/install.js) · [项目初始化](scripts/init-project.js)
+
+Kata 是一套 AI Agent 编程最佳实践框架。它用可复用的流程、技能、约束和验证循环，把 AI 编程从随机发挥变成稳定工程动作。
+
+Kata 将 Codex 和 Claude Code 作为一等开发工具支持。
+
+它把“安装能力”和“初始化项目”分开：
+
+- `npx skills add Woods30/kata` 只安装 Kata skill 和默认平台元数据。
+- `kata init` 才初始化目标项目，生成 agent 说明、docs、memory 和 hooks 模板。
+
+## 安装
+
+```bash
+npx skills add Woods30/kata
+```
+
+支持的平台：
+
+- `codex`：安装 `.codex-plugin/` 和 `skills/kata/`
+- `claude`：安装 `.claude-plugin/`、`commands/kata.md` 和 `skills/kata/`
+- `both`：同时安装两个平台入口
+
+默认安装 Codex 和 Claude 两个平台入口。本地直接安装时，可以使用 `kata add --platform=codex`、`kata add --platform=claude` 或 `kata add --platform=both`。
+
+安装器不会创建项目 docs、memory 或 hooks。需要初始化项目时再运行 `kata init`。
+
+## 初始化项目
+
+```bash
+kata init
+```
+
+`kata init` 只创建缺失文件，并在已有说明文件中追加带标记的 Kata 区块：
+
+- `AGENTS.md`
+- `CLAUDE.md`
+- `docs/spec.md`
+- `docs/prompt_plan.md`
+- `docs/todo.md`
+- `.claude/memory/project.md`
+- `.claude/memory/decisions.md`
+- `.claude/memory/session.md`
+- `.claude/settings.json`
+- `.codex/settings.json`
+- `.kata/scripts/session-start.sh`
+
+Hooks 通过平台支持的 settings 文件创建。若项目已有 settings 文件，Kata 不会覆盖，需要手动合并。
+
+## 框架组成
+
+- 可复用流程：初始化、规划、开发、记忆。
+- Skills：使用渐进式披露的可移植 `SKILL.md` 指令。
+- 约束：写入 `AGENTS.md` 和 `CLAUDE.md` 的项目规则。
+- 验证循环：计划前先澄清 spec，开发中跑测试，会话结束前更新记忆。
+- 项目级 hooks：`.claude/settings.json` 和 `.codex/settings.json`。
+
+## 仓库结构
+
+```text
+kata/
+├── .codex-plugin/
+├── .claude-plugin/
+├── commands/
+│   └── kata.md
+├── scripts/
+│   ├── install.js
+│   ├── init-project.js
+│   ├── kata.js
+│   └── skills.js
+└── skills/
+    ├── kata/
+    │   ├── SKILL.md
+    │   ├── templates/
+    │   └── workflows/
+    └── karpathy-guidelines/
+```

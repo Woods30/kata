@@ -1,81 +1,81 @@
-# WorkinClaude
+# Kata
 
-Team collaboration skill with brainstorming + TDD workflows for Claude Code.
+Languages: [English](README.md) | [中文](README.zh-CN.md)
 
-## Overview
+File index: [Codex plugin](.codex-plugin/plugin.json) · [Claude plugin](.claude-plugin/plugin.json) · [Kata skill](skills/kata/SKILL.md) · [Kata command](commands/kata.md) · [Installer](scripts/install.js) · [Project init](scripts/init-project.js)
 
-WorkinClaude is a composite skill that orchestrates team collaboration workflows:
-- **Planning** - Brainstorming + writing-plans for feature design
-- **Development** - Subagent-driven development with TDD
-- **Memory** - Team memory management in `.claude/memory/`
-- **Init** - Project initialization for team collaboration
+Kata is an AI agent programming best-practices framework. It uses reusable workflows, skills, constraints, and validation loops to turn AI coding from random improvisation into stable engineering action.
 
-## Installation
+Kata supports Codex and Claude Code as first-class development tools.
 
-### For Claude Code Users
+It separates installation from project initialization:
 
-1. Add to your `settings.json`:
-```json
-{
-  "extraKnownMarketplaces": {
-    "workinclaude-local": {
-      "source": {
-        "source": "file",
-        "path": "/path/to/workinclaude/.claude-plugin/marketplace.json"
-      }
-    }
-  }
-}
-```
+- `npx skills add Woods30/kata` installs Kata skill and default platform metadata.
+- `kata init` initializes a target project with agent instructions, docs, memory, and hook templates.
 
-2. Enable in `enabledPlugins`:
-```json
-{
-  "enabledPlugins": {
-    "workinclaude@workinclaude-local": true
-  }
-}
-```
-
-### For Project Initialization
+## Install
 
 ```bash
-node scripts/init-project.js
+npx skills add Woods30/kata
 ```
 
-## Usage
+Supported platforms:
 
-- `/workinclaude init` - Initialize project for team collaboration
-- `/workinclaude plan` - Start planning workflow
-- `/workinclaude develop` - Execute development workflow
-- `/workinclaude memory` - Manage team memory
+- `codex`: installs `.codex-plugin/` and `skills/kata/`
+- `claude`: installs `.claude-plugin/`, `commands/kata.md`, and `skills/kata/`
+- `both`: installs both platform surfaces
 
-## Structure
+By default, Kata installs both Codex and Claude surfaces. For direct local installs, use `kata add --platform=codex`, `kata add --platform=claude`, or `kata add --platform=both`.
 
+The installer does not create project docs, memory, or hooks. Run `kata init` for that.
+
+## Initialize a Project
+
+```bash
+kata init
 ```
-workinclaude/
-├── .claude-plugin/        # Plugin configuration
-│   ├── marketplace.json
-│   ├── plugin.json
-│   └── hooks/
-├── skills/
-│   ├── workinclaude/      # Main skill
-│   │   ├── SKILL.md
-│   │   ├── workflows/
-│   │   └── templates/
-│   └── karpathy-guidelines/  # Bundled default skill
+
+`kata init` creates missing files only and appends a marked Kata section to existing instruction files:
+
+- `AGENTS.md`
+- `CLAUDE.md`
+- `docs/spec.md`
+- `docs/prompt_plan.md`
+- `docs/todo.md`
+- `.claude/memory/project.md`
+- `.claude/memory/decisions.md`
+- `.claude/memory/session.md`
+- `.claude/settings.json`
+- `.codex/settings.json`
+- `.kata/scripts/session-start.sh`
+
+Hooks are created through platform-supported settings files. Existing settings files are not overwritten; merge them manually if your project already has hooks.
+
+## Framework
+
+- Reusable workflows: initialization, planning, development, and memory.
+- Skills: portable `SKILL.md` instructions with progressive disclosure.
+- Constraints: project rules in `AGENTS.md` and `CLAUDE.md`.
+- Validation loops: spec clarification before planning, tests during development, memory updates before session end.
+- Project-level hooks: `.claude/settings.json` and `.codex/settings.json`.
+
+## Repository Structure
+
+```text
+kata/
+├── .codex-plugin/
+├── .claude-plugin/
+├── commands/
+│   └── kata.md
 ├── scripts/
+│   ├── install.js
 │   ├── init-project.js
-│   └── install.js         # Auto-clones superpowers from GitHub
-└── docs/
+│   ├── kata.js
+│   └── skills.js
+└── skills/
+    ├── kata/
+    │   ├── SKILL.md
+    │   ├── templates/
+    │   └── workflows/
+    └── karpathy-guidelines/
 ```
-
-## Dependencies
-
-- **superpowers** - Auto-cloned from https://github.com/obra/superpowers.git
-  - Provides: brainstorming, writing-plans, tdd, subagent-driven-development
-- **karpathy-guidelines** - Bundled with this plugin
-
-## License
-
-MIT

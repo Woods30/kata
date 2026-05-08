@@ -1,130 +1,139 @@
 #!/usr/bin/env node
 /**
- * WorkinClaude Installation Script
- * Copies skill files from plugin to project skills directory
+ * Kata skill installer.
+ *
+ * Installs Kata into platform-readable locations only. Project scaffolding is
+ * handled by `kata init` / `kata:init`, implemented in scripts/init-project.js.
  */
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
-const PLUGIN_DIR = path.join(__dirname, '..');
-const PLUGIN_SKILL_DIR = path.join(PLUGIN_DIR, 'skills', 'workinclaude');
-const PROJECT_SKILLS_DIR = '.claude/skills';
+const REPO_ROOT = path.resolve(__dirname, '..');
+const SKILL_SRC = path.join(REPO_ROOT, 'skills', 'kata');
+const CODEX_PLUGIN_SRC = path.join(REPO_ROOT, '.codex-plugin');
+const CLAUDE_PLUGIN_SRC = path.join(REPO_ROOT, '.claude-plugin');
 
-const MEMORY_DIR = '.claude/memory';
-const GITIGNORE_PATH = '.gitignore';
-const CLAUDE_LOCAL = 'CLAUDE.local.md';
-const CLAUDE_LOCAL_TEMPLATE = path.join(PLUGIN_SKILL_DIR, 'templates', 'CLAUDE.local.template.md');
+const DEFAULT_PLATFORM = 'both';
 
-const SUPERPOWERS_REPO = 'https://github.com/obra/superpowers.git';
-const SUPERPOWERS_DIR = path.join(PLUGIN_DIR, 'skills', 'superpowers');
+function parseArgs(argv) {
+  const args = { command: 'add', packageName: 'kata', platform: DEFAULT_PLATFORM, target: process.cwd() };
+
+  for (let i = 0; i < argv.length; i += 1) {
+    const arg = argv[i];
+    if (arg === 'add') {
+      args.command = 'add';
+      if (argv[i + 1] && !argv[i + 1].startsWith('-')) {
+        args.packageName = argv[i + 1];
+        i += 1;
+      }
+    } else if (arg === '--platform' || arg === '-p') {
+      args.platform = argv[i + 1] || DEFAULT_PLATFORM;
+      i += 1;
+    } else if (arg.startsWith('--platform=')) {
+      args.platform = arg.slice('--platform='.length);
+    } else if (arg === '--target' || arg === '-t') {
+      args.target = path.resolve(argv[i + 1] || process.cwd());
+      i += 1;
+    } else if (arg.startsWith('--target=')) {
+      args.target = path.resolve(arg.slice('--target='.length));
+    } else if (arg === '--help' || arg === '-h') {
+      args.help = true;
+    }
+  }
+
+  return args;
+}
+
+function usage() {
+  console.log(`Kata installer
+
+Usage:
+  npx skills add kata
+  kata add --platform=both
+  kata add --platform=codex
+  kata add --platform=claude
+
+Options:
+  --platform <codex|claude|both>  Platform metadata to install. Default: both
+  --target <dir>                  Target project directory. Default: cwd
+
+The Skills CLI shape is npx skills add <package>; do not put Kata-specific
+platform options on the public skills add example. This installer defaults to
+both platforms. Run kata init in a target project to create AGENTS.md,
+CLAUDE.md, docs, memory, and hook templates.`);
+}
 
 function ensureDir(dir) {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-    console.log(`Created: ${dir}`);
-  }
+  fs.mkdirSync(dir, { recursive: true });
 }
 
 function copyDir(src, dest) {
-  if (!fs.existsSync(src)) return;
+  if (!fs.existsSync(src)) {
+    throw new Error(`Missing source: ${src}`);
+  }
 
   ensureDir(dest);
-
-  const entries = fs.readdirSync(src, { withFileTypes: true });
-  for (const entry of entries) {
+  for (const entry of fs.readdirSync(src, { withFileTypes: true })) {
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
-
     if (entry.isDirectory()) {
-      ensureDir(destPath);
       copyDir(srcPath, destPath);
     } else {
-      if (!fs.existsSync(destPath)) {
-        fs.copyFileSync(srcPath, destPath);
-        console.log(`Copied: ${destPath}`);
-      }
+      fs.copyFileSync(srcPath, destPath);
     }
   }
 }
 
-function addToGitIgnore(pattern) {
-  if (!fs.existsSync(GITIGNORE_PATH)) {
-    fs.writeFileSync(GITIGNORE_PATH, '');
-  }
-
-  const content = fs.readFileSync(GITIGNORE_PATH, 'utf8');
-  if (!content.includes(pattern)) {
-    fs.appendFileSync(GITIGNORE_PATH, `\n${pattern}`);
-    console.log(`Added to .gitignore: ${pattern}`);
-  }
+function copyFile(src, dest) {
+  ensureDir(path.dirname(dest));
+  fs.copyFileSync(src, dest);
 }
 
-function cloneSuperpowers() {
-  if (fs.existsSync(SUPERPOWERS_DIR)) {
-    console.log('superpowers already exists, skipping clone');
-    return;
-  }
+function installCodex(target) {
+  copyDir(SKILL_SRC, path.join(target, 'skills', 'kata'));
+  copyDir(CODEX_PLUGIN_SRC, path.join(target, '.codex-plugin'));
+  console.log('Installed Codex metadata and skills/kata.');
+}
 
-  console.log('Cloning superpowers from GitHub...');
-  try {
-    execSync(`git clone ${SUPERPOWERS_REPO} ${SUPERPOWERS_DIR}`, { stdio: 'inherit' });
-    console.log('superpowers cloned successfully');
-  } catch (error) {
-    console.error('Failed to clone superpowers:', error.message);
-  }
+function installClaude(target) {
+  copyDir(SKILL_SRC, path.join(target, 'skills', 'kata'));
+  copyDir(CLAUDE_PLUGIN_SRC, path.join(target, '.claude-plugin'));
+  copyFile(path.join(REPO_ROOT, 'commands', 'kata.md'), path.join(target, 'commands', 'kata.md'));
+  console.log('Installed Claude metadata, command, and skills/kata.');
 }
 
 function install() {
-  console.log('WorkinClaude: Installing skill to project...\n');
-
-  // Clone superpowers if not exists (will be used as remote reference)
-  cloneSuperpowers();
-
-  // Create project skills directory
-  ensureDir(PROJECT_SKILLS_DIR);
-
-  // Copy workinclaude skill
-  const workinclaudeSrc = path.join(PLUGIN_DIR, 'skills', 'workinclaude');
-  const workinclaudeDest = path.join(PROJECT_SKILLS_DIR, 'workinclaude');
-  copyDir(workinclaudeSrc, workinclaudeDest);
-  console.log(`\nSkill installed: ${workinclaudeDest}`);
-
-  // Copy karpathy-guidelines
-  const karpathySrc = path.join(PLUGIN_DIR, 'skills', 'karpathy-guidelines');
-  if (fs.existsSync(karpathySrc)) {
-    const karpathyDest = path.join(PROJECT_SKILLS_DIR, 'karpathy-guidelines');
-    copyDir(karpathySrc, karpathyDest);
-    console.log(`Skill installed: ${karpathyDest}`);
+  const args = parseArgs(process.argv.slice(2));
+  if (args.help) {
+    usage();
+    return;
   }
 
-  // Create memory directory and copy templates
-  ensureDir(MEMORY_DIR);
-
-  const memoryTemplatesDir = path.join(PLUGIN_SKILL_DIR, 'templates', 'memory');
-  if (fs.existsSync(memoryTemplatesDir)) {
-    fs.readdirSync(memoryTemplatesDir).forEach(file => {
-      const src = path.join(memoryTemplatesDir, file);
-      const dest = path.join(MEMORY_DIR, file);
-      if (!fs.existsSync(dest)) {
-        fs.copyFileSync(src, dest);
-        console.log(`Created memory: ${dest}`);
-      }
-    });
+  if (args.command !== 'add' || args.packageName !== 'kata') {
+    throw new Error('Only `skills add kata` is supported by this installer.');
   }
 
-  // Create CLAUDE.local.md from template if not exists
-  if (fs.existsSync(CLAUDE_LOCAL_TEMPLATE) && !fs.existsSync(CLAUDE_LOCAL)) {
-    fs.copyFileSync(CLAUDE_LOCAL_TEMPLATE, CLAUDE_LOCAL);
-    console.log(`Created: ${CLAUDE_LOCAL} (fill in your details)`);
+  if (!['codex', 'claude', 'both'].includes(args.platform)) {
+    throw new Error(`Unsupported platform: ${args.platform}. Use codex, claude, or both.`);
   }
 
-  // Ensure CLAUDE.local.md is in .gitignore
-  addToGitIgnore(CLAUDE_LOCAL);
+  ensureDir(args.target);
 
-  console.log('\nInstallation complete!');
-  console.log('Next: Restart Claude Code or run /workinclaude init');
+  if (args.platform === 'codex' || args.platform === 'both') {
+    installCodex(args.target);
+  }
+  if (args.platform === 'claude' || args.platform === 'both') {
+    installClaude(args.target);
+  }
+
+  console.log('\nKata installed.');
+  console.log('Next: run `kata init` in the project you want to scaffold.');
 }
 
-install();
+try {
+  install();
+} catch (error) {
+  console.error(`Kata install failed: ${error.message}`);
+  process.exit(1);
+}

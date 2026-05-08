@@ -1,11 +1,24 @@
 {
-  "name": "workinclaude",
+  "name": "kata",
   "version": "1.0.0",
-  "description": "Team collaboration skill with brainstorming + TDD workflows",
-  "scripts": {
-    "init": "node scripts/init-project.js",
-    "install": "node scripts/install.js"
+  "description": "AI agent programming best-practices framework with reusable workflows, skills, constraints, and validation loops",
+  "bin": {
+    "kata": "scripts/kata.js",
+    "skills": "scripts/skills.js"
   },
-  "keywords": ["claude", "claude-code", "skill", "team-collaboration"],
-  "author": "User"
+  "scripts": {
+    "install:skill": "node scripts/install.js add kata",
+    "init": "node scripts/init-project.js",
+    "test": "node --check scripts/install.js && node --check scripts/init-project.js && node --check scripts/kata.js && node --check scripts/skills.js"
+  },
+  "keywords": [
+    "codex",
+    "claude-code",
+    "skill",
+    "agent",
+    "workflow",
+    "project-memory"
+  ],
+  "author": "User",
+  "license": "MIT"
 }

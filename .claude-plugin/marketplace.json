@@ -1,17 +1,17 @@
 {
-  "name": "workinclaude",
+  "name": "kata",
   "owner": {
     "name": "Woods",
     "email": "woods.web3@gmail.com"
   },
   "metadata": {
-    "description": "Team collaboration skill with brainstorming + TDD workflows for project planning, development, and memory management",
+    "description": "AI agent programming best-practices framework for project planning, development, memory, and initialization",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "workinclaude",
-      "description": "Team collaboration skill with brainstorming + TDD workflows for project planning, development, and memory management",
+      "name": "kata",
+      "description": "AI agent programming best-practices framework for project planning, development, memory, and initialization",
       "source": "./"
     }
   ]

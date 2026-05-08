@@ -1,0 +1,13 @@
+{
+  "name": "kata",
+  "version": "1.0.0",
+  "description": "AI agent programming best-practices framework with reusable workflows, skills, constraints, and validation loops.",
+  "author": {
+    "name": "Woods",
+    "email": "woods.web3@gmail.com"
+  },
+  "interface": {
+    "displayName": "Kata",
+    "description": "Installable framework for turning AI coding from random improvisation into stable engineering action."
+  }
+}
