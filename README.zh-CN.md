@@ -42,12 +42,13 @@ kata init
 - `docs/spec.md`
 - `docs/prompt_plan.md`
 - `docs/todo.md`
-- `.claude/memory/project.md`
-- `.claude/memory/decisions.md`
-- `.claude/memory/session.md`
+- `.kata/memory/project.md`
+- `.kata/memory/decisions.md`
+- `.kata/memory/session.md`
 - `.claude/settings.json`
 - `.codex/settings.json`
-- `.kata/scripts/session-start.sh`
+- `.kata/scripts/session-reminder.sh`
+- `.kata/scripts/memory-check.sh`
 
 Hooks 通过平台支持的 settings 文件创建。若项目已有 settings 文件，Kata 不会覆盖，需要手动合并。
 
@@ -58,6 +59,7 @@ Hooks 通过平台支持的 settings 文件创建。若项目已有 settings 文
 - 约束：写入 `AGENTS.md` 和 `CLAUDE.md` 的项目规则。
 - 验证循环：计划前先澄清 spec，开发中跑测试，会话结束前更新记忆。
 - 项目级 hooks：`.claude/settings.json` 和 `.codex/settings.json`。
+- 共享记忆：`.kata/memory/` 可被支持的 IDE 共用。
 
 ## 仓库结构
 

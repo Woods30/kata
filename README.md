@@ -42,12 +42,13 @@ kata init
 - `docs/spec.md`
 - `docs/prompt_plan.md`
 - `docs/todo.md`
-- `.claude/memory/project.md`
-- `.claude/memory/decisions.md`
-- `.claude/memory/session.md`
+- `.kata/memory/project.md`
+- `.kata/memory/decisions.md`
+- `.kata/memory/session.md`
 - `.claude/settings.json`
 - `.codex/settings.json`
-- `.kata/scripts/session-start.sh`
+- `.kata/scripts/session-reminder.sh`
+- `.kata/scripts/memory-check.sh`
 
 Hooks are created through platform-supported settings files. Existing settings files are not overwritten; merge them manually if your project already has hooks.
 
@@ -58,6 +59,7 @@ Hooks are created through platform-supported settings files. Existing settings f
 - Constraints: project rules in `AGENTS.md` and `CLAUDE.md`.
 - Validation loops: spec clarification before planning, tests during development, memory updates before session end.
 - Project-level hooks: `.claude/settings.json` and `.codex/settings.json`.
+- Shared memory: `.kata/memory/` works across supported IDEs.
 
 ## Repository Structure
 

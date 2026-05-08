@@ -15,7 +15,7 @@ This repository builds Kata, an AI agent programming best-practices framework. K
 - Install only installs Kata skill and platform metadata.
 - `kata init` initializes target project structure.
 - Planning writes to `docs/spec.md`, `docs/prompt_plan.md`, and `docs/todo.md`.
-- Project memory lives under `.claude/memory/`.
+- Project memory lives under `.kata/memory/`.
 - Project-level hooks use `.claude/settings.json` and `.codex/settings.json`; do not use invented hook directories as activation mechanisms.
 
 ## Development Rules

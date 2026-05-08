@@ -16,13 +16,14 @@ Create a cross-platform project scaffold that works in Codex and Claude Code wit
    - `docs/prompt_plan.md`
    - `docs/todo.md`
 5. Create memory files if missing:
-   - `.claude/memory/project.md`
-   - `.claude/memory/decisions.md`
-   - `.claude/memory/session.md`
+   - `.kata/memory/project.md`
+   - `.kata/memory/decisions.md`
+   - `.kata/memory/session.md`
 6. Create project-level hook settings where missing:
    - `.claude/settings.json`
    - `.codex/settings.json`
-   - `.kata/scripts/session-start.sh`
+   - `.kata/scripts/session-reminder.sh`
+   - `.kata/scripts/memory-check.sh`
 7. Do not overwrite existing platform settings. If settings already exist, report that manual merge is needed.
 8. Add local-only files to `.gitignore` where needed.
 

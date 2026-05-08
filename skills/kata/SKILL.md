@@ -25,7 +25,7 @@ Kata projects use these shared files:
 - `docs/spec.md` for the current feature specification.
 - `docs/prompt_plan.md` for executable implementation prompts.
 - `docs/todo.md` for cross-session progress.
-- `.claude/memory/project.md`, `.claude/memory/decisions.md`, and `.claude/memory/session.md` for text project memory shared by supported tools.
+- `.kata/memory/project.md`, `.kata/memory/decisions.md`, and `.kata/memory/session.md` for text project memory shared by supported tools.
 - `.claude/settings.json` and `.codex/settings.json` for project-level hooks supported by Claude Code and Codex.
 
 ## Rules

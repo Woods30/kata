@@ -44,9 +44,9 @@ Usage:
 Creates or updates:
   AGENTS.md, CLAUDE.md
   docs/spec.md, docs/prompt_plan.md, docs/todo.md
-  .claude/memory/project.md, decisions.md, session.md
+  .kata/memory/project.md, decisions.md, session.md
   .claude/settings.json, .codex/settings.json
-  .kata/scripts/session-start.sh`);
+  .kata/scripts/session-reminder.sh, memory-check.sh`);
 }
 
 function ensureDir(dir) {
@@ -72,12 +72,12 @@ function kataSection(fileName) {
   return `${KATA_MARKER_START}
 ## Kata Workflow
 
-- At session start, read \`docs/todo.md\` and \`.claude/memory/project.md\`.
+- At session start, read \`docs/todo.md\` and \`.kata/memory/project.md\`.
 - For new work, clarify requirements into \`docs/spec.md\`.
 - Turn accepted specs into \`docs/prompt_plan.md\` and \`docs/todo.md\`.
-- Before ending meaningful work, update \`docs/todo.md\` and \`.claude/memory/session.md\`.
+- Before ending meaningful work, update \`docs/todo.md\` and \`.kata/memory/session.md\`.
 - Project-level hooks use \`.claude/settings.json\` and \`.codex/settings.json\`.
-- Kata's default hook calls \`.kata/scripts/session-start.sh\`.
+- Kata's default hooks call \`.kata/scripts/session-reminder.sh\` and \`.kata/scripts/memory-check.sh\`.
 
 Primary file for this tool: \`${fileName}\`.
 ${KATA_MARKER_END}
@@ -147,14 +147,15 @@ function initProject() {
   }
 
   copyTemplateTree('docs', path.join(target, 'docs'), created, skipped);
-  copyTemplateTree('memory', path.join(target, '.claude', 'memory'), created, skipped);
+  copyTemplateTree('kata', path.join(target, '.kata'), created, skipped);
   copyTemplateTree('claude', path.join(target, '.claude'), created, skipped);
   copyTemplateTree('codex', path.join(target, '.codex'), created, skipped);
-  copyTemplateTree('scripts', path.join(target, '.kata', 'scripts'), created, skipped);
 
-  const hookScript = path.join(target, '.kata', 'scripts', 'session-start.sh');
-  if (fs.existsSync(hookScript)) {
-    fs.chmodSync(hookScript, 0o755);
+  for (const scriptName of ['session-reminder.sh', 'memory-check.sh']) {
+    const hookScript = path.join(target, '.kata', 'scripts', scriptName);
+    if (fs.existsSync(hookScript)) {
+      fs.chmodSync(hookScript, 0o755);
+    }
   }
 
   addGitignore(target, 'CLAUDE.local.md', updated);

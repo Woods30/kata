@@ -15,11 +15,11 @@ This project uses Kata as an AI agent programming best-practices framework: reus
 
 ## Kata Workflow
 
-- At session start, read `docs/todo.md` and `.claude/memory/project.md`.
+- At session start, read `docs/todo.md` and `.kata/memory/project.md`.
 - For new work, clarify requirements into `docs/spec.md`.
 - Turn accepted specs into `docs/prompt_plan.md` and `docs/todo.md`.
 - During development, keep tests close to the changed behavior.
-- Before ending a meaningful session, update `docs/todo.md` and `.claude/memory/session.md`.
+- Before ending a meaningful session, update `docs/todo.md` and `.kata/memory/session.md`.
 
 ## Docs
 
@@ -29,9 +29,9 @@ This project uses Kata as an AI agent programming best-practices framework: reus
 
 ## Memory
 
-- Project context: `.claude/memory/project.md`
-- Decisions: `.claude/memory/decisions.md`
-- Session progress: `.claude/memory/session.md`
+- Project context: `.kata/memory/project.md`
+- Decisions: `.kata/memory/decisions.md`
+- Session progress: `.kata/memory/session.md`
 
 ## Hooks
 
@@ -40,4 +40,7 @@ Project-level hooks use platform-supported settings files:
 - Codex: `.codex/settings.json`
 - Claude Code: `.claude/settings.json`
 
-Kata's default hook calls `.kata/scripts/session-start.sh`, which only emits a reminder to read docs and memory.
+Kata's default hooks call:
+
+- `.kata/scripts/session-reminder.sh` on `UserPromptSubmit` to remind agents to read docs and memory.
+- `.kata/scripts/memory-check.sh` on `Stop` to require a session memory check before ending.

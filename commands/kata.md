@@ -19,7 +19,7 @@ These commands are manual fallbacks. The Kata skill is primarily intended to tri
 
 ## Commands
 
-- `init`: create or update `AGENTS.md`, `CLAUDE.md`, `docs/`, `.claude/memory/`, `.claude/settings.json`, `.codex/settings.json`, and `.kata/scripts/`.
+- `init`: create or update `AGENTS.md`, `CLAUDE.md`, `docs/`, `.kata/memory/`, `.claude/settings.json`, `.codex/settings.json`, and `.kata/scripts/`.
 - `plan`: clarify requirements into `docs/spec.md`, then update `docs/prompt_plan.md` and `docs/todo.md`.
 - `develop`: execute `docs/prompt_plan.md` with tests and keep `docs/todo.md` current.
 - `memory`: read, search, or update project memory.

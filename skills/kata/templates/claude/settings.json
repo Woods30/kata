@@ -6,7 +6,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./.kata/scripts/session-start.sh"
+            "command": "./.kata/scripts/session-reminder.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./.kata/scripts/memory-check.sh"
           }
         ]
       }
