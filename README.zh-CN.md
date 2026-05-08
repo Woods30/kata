@@ -2,8 +2,6 @@
 
 语言：[English](README.md) | [中文](README.zh-CN.md)
 
-文件索引：[Codex 插件](.codex-plugin/plugin.json) · [Claude 插件](.claude-plugin/plugin.json) · [Kata Skill](skills/kata/SKILL.md) · [Kata 命令](commands/kata.md) · [Kata init 命令](commands/kata:init.md) · [安装器](scripts/install.js) · [项目初始化](scripts/init-project.js)
-
 Kata 是一套 AI Agent 编程最佳实践框架。它用可复用的流程、技能、约束和验证循环，把 AI 编程从随机发挥变成稳定工程动作。
 
 Kata 将 Codex 和 Claude Code 作为一等开发工具支持。
@@ -23,9 +21,10 @@ npx skills add Woods30/kata
 
 通过 Claude Marketplace 安装：
 
-1. 打开 Claude Code 的 plugin 或 marketplace 安装入口。
-2. 添加 `github.com/Woods30/kata`。
-3. 在 Claude Code 中启用 Kata plugin。
+```bash
+claude plugin marketplace add github.com/Woods30/kata
+claude plugin install kata@kata
+```
 
 支持的平台：
 

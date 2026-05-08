@@ -2,8 +2,6 @@
 
 Languages: [English](README.md) | [中文](README.zh-CN.md)
 
-File index: [Codex plugin](.codex-plugin/plugin.json) · [Claude plugin](.claude-plugin/plugin.json) · [Kata skill](skills/kata/SKILL.md) · [Kata commands](commands/kata.md) · [Kata init command](commands/kata:init.md) · [Installer](scripts/install.js) · [Project init](scripts/init-project.js)
-
 Kata is an AI agent programming best-practices framework. It uses reusable workflows, skills, constraints, and validation loops to turn AI coding from random improvisation into stable engineering action.
 
 Kata supports Codex and Claude Code as first-class development tools.
@@ -23,9 +21,10 @@ npx skills add Woods30/kata
 
 Install from Claude Marketplace:
 
-1. Open Claude Code's plugin or marketplace installer.
-2. Add `github.com/Woods30/kata`.
-3. Enable the Kata plugin for Claude Code.
+```bash
+claude plugin marketplace add github.com/Woods30/kata
+claude plugin install kata@kata
+```
 
 Supported platforms:
 
