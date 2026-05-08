@@ -24,4 +24,5 @@ This repository builds Kata, an AI agent programming best-practices framework. K
 - Do not use the removed legacy docs tree.
 - Preserve existing user project files during initialization.
 - Keep Codex support through `AGENTS.md` and `.codex-plugin/plugin.json`.
-- Keep Claude Code support through `CLAUDE.md`, `.claude-plugin/plugin.json`, and `commands/kata.md`.
+- Keep Claude Code support through `CLAUDE.md`, `.claude-plugin/plugin.json`, and `commands/`.
+- Treat `commands/` as Claude slash-command compatibility only; Codex should rely on skill description triggering.

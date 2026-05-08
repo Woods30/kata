@@ -1,5 +1,5 @@
 ---
-description: "Kata AI agent programming framework: init, planning, development, and memory"
+description: "Kata AI agent programming framework: init, planning, development, test, and memory"
 ---
 
 # Kata
@@ -9,14 +9,19 @@ Use Kata when you need AI agent programming best practices: reusable workflows, 
 ## Usage
 
 ```text
+/kata:init
+/kata:plan
+/kata:dev
+/kata:test
+/kata:memory
 /kata init
 /kata plan
-/kata develop
+/kata dev
 /kata test
 /kata memory
 ```
 
-These commands are manual fallbacks. The Kata skill is primarily intended to trigger implicitly from natural language.
+Colon commands such as `/kata:init` and `/kata:test` are direct Claude slash commands. The space-separated forms are manual fallbacks. In Codex, use natural language; Kata is triggered through `skills/kata/SKILL.md`, not through `commands/`.
 
 ## Commands
 

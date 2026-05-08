@@ -2,7 +2,7 @@
 
 Languages: [English](README.md) | [中文](README.zh-CN.md)
 
-File index: [Codex plugin](.codex-plugin/plugin.json) · [Claude plugin](.claude-plugin/plugin.json) · [Kata skill](skills/kata/SKILL.md) · [Kata command](commands/kata.md) · [Installer](scripts/install.js) · [Project init](scripts/init-project.js)
+File index: [Codex plugin](.codex-plugin/plugin.json) · [Claude plugin](.claude-plugin/plugin.json) · [Kata skill](skills/kata/SKILL.md) · [Kata commands](commands/kata.md) · [Kata init command](commands/kata:init.md) · [Installer](scripts/install.js) · [Project init](scripts/init-project.js)
 
 Kata is an AI agent programming best-practices framework. It uses reusable workflows, skills, constraints, and validation loops to turn AI coding from random improvisation into stable engineering action.
 
@@ -22,12 +22,14 @@ npx skills add Woods30/kata
 Supported platforms:
 
 - `codex`: installs `.codex-plugin/` and `skills/kata/`
-- `claude`: installs `.claude-plugin/`, `commands/kata.md`, and `skills/kata/`
+- `claude`: installs `.claude-plugin/`, `commands/`, and `skills/kata/`
 - `both`: installs both platform surfaces
 
 By default, Kata installs both Codex and Claude surfaces. For direct local installs, use `kata add --platform=codex`, `kata add --platform=claude`, or `kata add --platform=both`.
 
 The installer does not create project docs, memory, or hooks. Run `kata init` for that.
+
+`commands/` is a Claude slash-command compatibility layer. Codex does not rely on it; Codex uses `skills/kata/SKILL.md` for implicit skill triggering.
 
 ## Initialize a Project
 
@@ -70,7 +72,12 @@ kata/
 ├── .codex-plugin/
 ├── .claude-plugin/
 ├── commands/
-│   └── kata.md
+│   ├── kata.md
+│   ├── kata:init.md
+│   ├── kata:plan.md
+│   ├── kata:dev.md
+│   ├── kata:test.md
+│   └── kata:memory.md
 ├── scripts/
 │   ├── install.js
 │   ├── init-project.js

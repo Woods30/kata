@@ -99,8 +99,8 @@ function installCodex(target) {
 function installClaude(target) {
   copyDir(SKILL_SRC, path.join(target, 'skills', 'kata'));
   copyDir(CLAUDE_PLUGIN_SRC, path.join(target, '.claude-plugin'));
-  copyFile(path.join(REPO_ROOT, 'commands', 'kata.md'), path.join(target, 'commands', 'kata.md'));
-  console.log('Installed Claude metadata, command, and skills/kata.');
+  copyDir(path.join(REPO_ROOT, 'commands'), path.join(target, 'commands'));
+  console.log('Installed Claude metadata, commands, and skills/kata.');
 }
 
 function install() {

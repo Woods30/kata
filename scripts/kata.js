@@ -17,11 +17,17 @@ if (command === 'init' || command === 'kata:init') {
   run('init-project.js', rest);
 } else if (command === 'add') {
   run('install.js', ['add', ...rest]);
+} else if (['plan', 'dev', 'test', 'memory'].includes(command)) {
+  console.log(`kata ${command} is an agent workflow command. In Claude, use /kata:${command}. In Codex, ask naturally and Kata will trigger from skills/kata/SKILL.md.`);
 } else {
   console.log(`Kata
 
 Usage:
   kata init
+  kata plan
+  kata dev
+  kata test
+  kata memory
   kata add --platform=both
 
 Use \`npx skills add kata\` for the Skills CLI install shape.`);

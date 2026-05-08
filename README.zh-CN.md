@@ -2,7 +2,7 @@
 
 语言：[English](README.md) | [中文](README.zh-CN.md)
 
-文件索引：[Codex 插件](.codex-plugin/plugin.json) · [Claude 插件](.claude-plugin/plugin.json) · [Kata Skill](skills/kata/SKILL.md) · [Kata 命令](commands/kata.md) · [安装器](scripts/install.js) · [项目初始化](scripts/init-project.js)
+文件索引：[Codex 插件](.codex-plugin/plugin.json) · [Claude 插件](.claude-plugin/plugin.json) · [Kata Skill](skills/kata/SKILL.md) · [Kata 命令](commands/kata.md) · [Kata init 命令](commands/kata:init.md) · [安装器](scripts/install.js) · [项目初始化](scripts/init-project.js)
 
 Kata 是一套 AI Agent 编程最佳实践框架。它用可复用的流程、技能、约束和验证循环，把 AI 编程从随机发挥变成稳定工程动作。
 
@@ -22,12 +22,14 @@ npx skills add Woods30/kata
 支持的平台：
 
 - `codex`：安装 `.codex-plugin/` 和 `skills/kata/`
-- `claude`：安装 `.claude-plugin/`、`commands/kata.md` 和 `skills/kata/`
+- `claude`：安装 `.claude-plugin/`、`commands/` 和 `skills/kata/`
 - `both`：同时安装两个平台入口
 
 默认安装 Codex 和 Claude 两个平台入口。本地直接安装时，可以使用 `kata add --platform=codex`、`kata add --platform=claude` 或 `kata add --platform=both`。
 
 安装器不会创建项目 docs、memory 或 hooks。需要初始化项目时再运行 `kata init`。
+
+`commands/` 是 Claude slash command 兼容层。Codex 不依赖它；Codex 通过 `skills/kata/SKILL.md` 的 description 隐式触发 Kata。
 
 ## 初始化项目
 
@@ -70,7 +72,12 @@ kata/
 ├── .codex-plugin/
 ├── .claude-plugin/
 ├── commands/
-│   └── kata.md
+│   ├── kata.md
+│   ├── kata:init.md
+│   ├── kata:plan.md
+│   ├── kata:dev.md
+│   ├── kata:test.md
+│   └── kata:memory.md
 ├── scripts/
 │   ├── install.js
 │   ├── init-project.js
