@@ -15,9 +15,17 @@ Kata 将 Codex 和 Claude Code 作为一等开发工具支持。
 
 ## 安装
 
+作为通用 agent skill 安装：
+
 ```bash
 npx skills add Woods30/kata
 ```
+
+通过 Claude Marketplace 安装：
+
+1. 打开 Claude Code 的 plugin 或 marketplace 安装入口。
+2. 添加 `github.com/Woods30/kata`。
+3. 在 Claude Code 中启用 Kata plugin。
 
 支持的平台：
 
@@ -29,7 +37,7 @@ npx skills add Woods30/kata
 
 安装器不会创建项目 docs、memory 或 hooks。需要初始化项目时再运行 `kata init`。
 
-`commands/` 是 Claude slash command 兼容层。Codex 不依赖它；Codex 通过 `skills/kata/SKILL.md` 的 description 隐式触发 Kata。
+`commands/` 是 Claude slash command 兼容层。Codex 不依赖它；Codex 通过 `skills/kata/SKILL.md` 的 description 隐式触发 Kata。`npx skills update` 更新的是已安装 skills，不应把它当成 Claude slash commands 的可靠同步来源；需要安装或刷新 commands 时，使用 Claude Marketplace/plugin 安装路径。
 
 ## 初始化项目
 

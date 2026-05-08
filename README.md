@@ -15,9 +15,17 @@ It separates installation from project initialization:
 
 ## Install
 
+Install as a portable agent skill:
+
 ```bash
 npx skills add Woods30/kata
 ```
+
+Install from Claude Marketplace:
+
+1. Open Claude Code's plugin or marketplace installer.
+2. Add `github.com/Woods30/kata`.
+3. Enable the Kata plugin for Claude Code.
 
 Supported platforms:
 
@@ -29,7 +37,7 @@ By default, Kata installs both Codex and Claude surfaces. For direct local insta
 
 The installer does not create project docs, memory, or hooks. Run `kata init` for that.
 
-`commands/` is a Claude slash-command compatibility layer. Codex does not rely on it; Codex uses `skills/kata/SKILL.md` for implicit skill triggering.
+`commands/` is a Claude slash-command compatibility layer. Codex does not rely on it; Codex uses `skills/kata/SKILL.md` for implicit skill triggering. `npx skills update` updates installed skills and should not be treated as the source of truth for Claude slash commands; use the Claude Marketplace/plugin install path when commands need to be installed or refreshed.
 
 ## Initialize a Project
 
