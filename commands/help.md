@@ -27,7 +27,7 @@ Colon commands such as `/kata:init` and `/kata:test` are direct Claude slash com
 
 - `init`: create or update `AGENTS.md`, `CLAUDE.md`, `docs/`, `.kata/memory/`, `.claude/settings.json`, `.codex/settings.json`, and `.kata/scripts/`.
 - `plan`: brainstorm and clarify requirements into `docs/spec.md`, then update `docs/prompt_plan.md` and `docs/todo.md`.
-- `develop`: execute `docs/prompt_plan.md` with tests and keep `docs/todo.md` current.
+- `dev`: execute `docs/prompt_plan.md` with tests and keep `docs/todo.md` current.
 - `test`: run installed testing skills or Kata's built-in validation flow.
 - `memory`: read, search, or update project memory.
 

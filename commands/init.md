@@ -20,4 +20,4 @@ Run the Kata init workflow:
 kata init
 ```
 
-This command exists so users can run `/kata:init` directly without knowing the subcommand form `/kata init`.
+This command exists so users can run `/kata:init` directly through the Claude plugin namespace without knowing the subcommand form `/kata init`.

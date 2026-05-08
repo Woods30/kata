@@ -22,7 +22,7 @@ npx skills add Woods30/kata
 Install from Claude Marketplace:
 
 ```bash
-claude plugin marketplace add github.com/Woods30/kata
+claude plugin marketplace add Woods30/kata
 claude plugin install kata@kata
 ```
 
@@ -79,12 +79,12 @@ kata/
 ├── .codex-plugin/
 ├── .claude-plugin/
 ├── commands/
-│   ├── kata.md
-│   ├── kata:init.md
-│   ├── kata:plan.md
-│   ├── kata:dev.md
-│   ├── kata:test.md
-│   └── kata:memory.md
+│   ├── help.md
+│   ├── init.md
+│   ├── plan.md
+│   ├── dev.md
+│   ├── test.md
+│   └── memory.md
 ├── scripts/
 │   ├── install.js
 │   ├── init-project.js
