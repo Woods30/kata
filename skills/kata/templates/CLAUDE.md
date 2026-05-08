@@ -22,6 +22,16 @@ This project uses Kata as an AI agent programming best-practices framework: reus
 - During development, keep tests close to the changed behavior.
 - Before ending a meaningful session, update `docs/todo.md` and `.kata/memory/session.md`.
 
+## Agent Constraints
+
+- Think before coding: state assumptions when they affect implementation, surface ambiguity, and ask only when a silent choice would be risky.
+- Prefer the simplest working change: no speculative features, single-use abstractions, or configurability that was not requested.
+- Make surgical edits: touch only files and lines needed for the task, match existing style, and avoid unrelated refactors or formatting churn.
+- Clean up only consequences of your own change, such as imports, variables, or functions made unused by your edit.
+- Use verifiable goals: for fixes, reproduce the issue when practical; for changes, define the check that proves completion.
+- For multi-step work, keep the plan brief and tie each step to a concrete verification.
+- If a change grows larger than needed, simplify before handing it off.
+
 ## Docs
 
 - Current spec: `docs/spec.md`

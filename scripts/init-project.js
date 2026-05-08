@@ -81,6 +81,16 @@ function kataSection(fileName) {
 - Project-level hooks use \`.claude/settings.json\` and \`.codex/settings.json\`.
 - Kata's default hooks call \`.kata/scripts/session-reminder.sh\` and \`.kata/scripts/memory-check.sh\`.
 
+## Agent Constraints
+
+- Think before coding: state assumptions when they affect implementation, surface ambiguity, and ask only when a silent choice would be risky.
+- Prefer the simplest working change: no speculative features, single-use abstractions, or configurability that was not requested.
+- Make surgical edits: touch only files and lines needed for the task, match existing style, and avoid unrelated refactors or formatting churn.
+- Clean up only consequences of your own change, such as imports, variables, or functions made unused by your edit.
+- Use verifiable goals: for fixes, reproduce the issue when practical; for changes, define the check that proves completion.
+- For multi-step work, keep the plan brief and tie each step to a concrete verification.
+- If a change grows larger than needed, simplify before handing it off.
+
 Primary file for this tool: \`${fileName}\`.
 ${KATA_MARKER_END}
 `;

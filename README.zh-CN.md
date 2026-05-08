@@ -91,9 +91,8 @@ kata/
 │   ├── kata.js
 │   └── skills.js
 └── skills/
-    ├── kata/
-    │   ├── SKILL.md
-    │   ├── templates/
-    │   └── workflows/
-    └── karpathy-guidelines/
+    └── kata/
+        ├── SKILL.md
+        ├── templates/
+        └── workflows/
 ```
