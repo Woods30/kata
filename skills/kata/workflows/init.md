@@ -19,13 +19,15 @@ Create a cross-platform project scaffold that works in Codex and Claude Code wit
    - `.kata/memory/project.md`
    - `.kata/memory/decisions.md`
    - `.kata/memory/session.md`
-6. Create project-level hook settings where missing:
+6. Create skill inventory if missing:
+   - `.kata/skills.md`
+7. Create project-level hook settings where missing:
    - `.claude/settings.json`
    - `.codex/settings.json`
    - `.kata/scripts/session-reminder.sh`
    - `.kata/scripts/memory-check.sh`
-7. Do not overwrite existing platform settings. If settings already exist, report that manual merge is needed.
-8. Add local-only files to `.gitignore` where needed.
+8. Do not overwrite existing platform settings. If settings already exist, report that manual merge is needed.
+9. Add local-only files to `.gitignore` where needed.
 
 ## Non-Overwrite Rule
 

@@ -16,7 +16,8 @@ This project uses Kata as an AI agent programming best-practices framework: reus
 ## Kata Workflow
 
 - At session start, read `docs/todo.md` and `.kata/memory/project.md`.
-- For new work, clarify requirements into `docs/spec.md`.
+- Check `.kata/skills.md` and use matching installed skills before Kata built-in fallbacks.
+- For new work, brainstorm and clarify requirements into `docs/spec.md`.
 - Turn accepted specs into `docs/prompt_plan.md` and `docs/todo.md`.
 - During development, keep tests close to the changed behavior.
 - Before ending a meaningful session, update `docs/todo.md` and `.kata/memory/session.md`.

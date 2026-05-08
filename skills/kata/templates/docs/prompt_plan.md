@@ -2,7 +2,7 @@
 
 ## Source Spec
 
-This plan must be generated only after `docs/spec.md` is decision-ready. If the spec still has blocking open questions, stop and return to the clarification dialogue.
+This plan must be generated only after brainstorming has produced a decision-ready `docs/spec.md`. If the spec still has blocking open questions, stop and return to brainstorming and clarification dialogue.
 
 ## Implementation Steps
 

@@ -44,6 +44,7 @@ Usage:
 Creates or updates:
   AGENTS.md, CLAUDE.md
   docs/spec.md, docs/prompt_plan.md, docs/todo.md
+  .kata/skills.md
   .kata/memory/project.md, decisions.md, session.md
   .claude/settings.json, .codex/settings.json
   .kata/scripts/session-reminder.sh, memory-check.sh`);
@@ -73,7 +74,8 @@ function kataSection(fileName) {
 ## Kata Workflow
 
 - At session start, read \`docs/todo.md\` and \`.kata/memory/project.md\`.
-- For new work, clarify requirements into \`docs/spec.md\`.
+- Check \`.kata/skills.md\` and use matching installed skills before Kata built-in fallbacks.
+- For new work, brainstorm and clarify requirements into \`docs/spec.md\`.
 - Turn accepted specs into \`docs/prompt_plan.md\` and \`docs/todo.md\`.
 - Before ending meaningful work, update \`docs/todo.md\` and \`.kata/memory/session.md\`.
 - Project-level hooks use \`.claude/settings.json\` and \`.codex/settings.json\`.

@@ -45,6 +45,7 @@ kata init
 - `.kata/memory/project.md`
 - `.kata/memory/decisions.md`
 - `.kata/memory/session.md`
+- `.kata/skills.md`
 - `.claude/settings.json`
 - `.codex/settings.json`
 - `.kata/scripts/session-reminder.sh`
@@ -56,8 +57,9 @@ Hooks 通过平台支持的 settings 文件创建。若项目已有 settings 文
 
 - 可复用流程：初始化、规划、开发、记忆。
 - Skills：使用渐进式披露的可移植 `SKILL.md` 指令。
+- 技能编排：优先调用已安装技能，例如 `superpowers`，没有匹配技能时才使用 Kata 内置流程。
 - 约束：写入 `AGENTS.md` 和 `CLAUDE.md` 的项目规则。
-- 验证循环：计划前先澄清 spec，开发中跑测试，会话结束前更新记忆。
+- 验证循环：计划前先头脑风暴并澄清 spec，开发中跑测试，会话结束前更新记忆。
 - 项目级 hooks：`.claude/settings.json` 和 `.codex/settings.json`。
 - 共享记忆：`.kata/memory/` 可被支持的 IDE 共用。
 

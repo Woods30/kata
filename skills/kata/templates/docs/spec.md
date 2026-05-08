@@ -8,6 +8,13 @@
 
 [Current state, users, constraints, and relevant files.]
 
+## Brainstorming Summary
+
+- Chosen direction:
+- Rejected alternative:
+- Main assumption that could be wrong:
+- Smallest useful next action:
+
 ## Requirements
 
 - [Requirement 1]

@@ -45,6 +45,7 @@ kata init
 - `.kata/memory/project.md`
 - `.kata/memory/decisions.md`
 - `.kata/memory/session.md`
+- `.kata/skills.md`
 - `.claude/settings.json`
 - `.codex/settings.json`
 - `.kata/scripts/session-reminder.sh`
@@ -56,8 +57,9 @@ Hooks are created through platform-supported settings files. Existing settings f
 
 - Reusable workflows: initialization, planning, development, and memory.
 - Skills: portable `SKILL.md` instructions with progressive disclosure.
+- Skill orchestration: installed skills such as `superpowers` are used before Kata's built-in fallback workflows.
 - Constraints: project rules in `AGENTS.md` and `CLAUDE.md`.
-- Validation loops: spec clarification before planning, tests during development, memory updates before session end.
+- Validation loops: brainstorming and spec clarification before planning, tests during development, memory updates before session end.
 - Project-level hooks: `.claude/settings.json` and `.codex/settings.json`.
 - Shared memory: `.kata/memory/` works across supported IDEs.
 
